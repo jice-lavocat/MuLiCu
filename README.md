@@ -1,0 +1,4 @@
+MuLiCu
+======
+
+Multilingual Curation Tool
