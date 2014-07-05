@@ -6,7 +6,8 @@ class Curator extends Illuminate\Database\Eloquent\Model {
 	public $timestamps = false;
 
 	public function scores() {
-	return $this->hasMany('Article');
+		return $this->hasMany('Article');
 	}
 
 }
+

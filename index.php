@@ -22,14 +22,17 @@ $capsule = new Capsule;
  
 $app->db = $capsule->addConnection(array(
     'driver'    => 'mysql',
-    'host'      => 'localhost',
-    'database'  => 'test',
-    'username'  => 'test',
-    'password'  => 'l4m3p455w0rd!',
+    'host'      => '127.0.0.1',
+    'port'	=> 3306,
+    'database'  => 'mulicu',
+    'username'  => 'root',
+    'password'  => '',
     'charset'   => 'utf8',
     'collation' => 'utf8_unicode_ci',
-    'prefix'    => ''
+    'prefix'	=> '',
 ));
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
 /*
 $app->db = Capsule\Database\Connection::make('default', array(
     'driver' => 'mysql',
@@ -52,13 +55,13 @@ $app->get('/', function () use ($app) {
 
 $app->get('/curators/', function () {
     $curators = Curator::all();
-    echo $curators>toJson();
+    #echo $curators>toJson();
 });
 
-$app->get('/generate', function () {
+$app->get('/generate/', function () use ($app) {
 	for ($i = 1; $i<=10; $i++) {
 		$curator = new Curator();
-		$oScore->save();
+		$curator->save();
 	}
     echo "generated";
 });
