@@ -33,18 +33,7 @@ $app->db = $capsule->addConnection(array(
 ));
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
-/*
-$app->db = Capsule\Database\Connection::make('default', array(
-    'driver' => 'mysql',
-    'host' => 'localhost',
-    'port' => 3306,
-    'database' => 'mulicu',
-    'username' => 'root',
-    'password' => '',
-    'prefix' => '',
-    'charset' => "utf8",
-    'collation' => 'utf8_general_ci'
-), true);*/
+
 
 // Routes
 
@@ -66,10 +55,34 @@ $app->get('/generate/', function () use ($app) {
 	}
     echo "generated";
 });
+/**********
+* Admin
+**********/
 
+# Listing existing objects
+$app->get('/admin/users/list/', function () {
+	$users = User::all();
+	echo $users->toJson();
+});
+$app->get('/admin/users/:id', function($id) use ($app) {
+	$user = User::where('id', '=', $id)->get() ;
+	echo $user->toJson();
+});
+
+$app->get('/admin/articles/list/json', function () {
+	$articles = Article::all();
+	echo $articles>toJson();
+});
+$app->get('/admin/articles/list/', function () use($app){
+	$articles = Article::all();
+	$app -> render('admin/articles.html', array('articles' => $articles));
+});
+
+
+# Installation
 $app->get('/install_schema/', function () use ($app) {
 	require 'install/schemas.php';
-	echo "Fait";
+	echo "Schemas installed";
 });
 
 $app->run();
