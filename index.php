@@ -66,4 +66,9 @@ $app->get('/generate/', function () use ($app) {
     echo "generated";
 });
 
+$app->get('/install_schema/', function () use ($app) {
+	require 'install/schemas.php';
+	echo "Fait";
+});
+
 $app->run();
