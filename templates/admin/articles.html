@@ -3,4 +3,5 @@
 {% for article in articles %}
 	{article.title}
 {% endfor %}
+<a href="{{urlFor('admin_add_new_article')}}">Add a new article</a>
 {% endblock %}

@@ -69,6 +69,7 @@ $app->get('/admin/users/:id', function($id) use ($app) {
 	echo $user->toJson();
 });
 
+/***** Articles ***/
 $app->get('/admin/articles/list/json', function () {
 	$articles = Article::all();
 	echo $articles>toJson();
@@ -76,8 +77,11 @@ $app->get('/admin/articles/list/json', function () {
 $app->get('/admin/articles/list/', function () use($app){
 	$articles = Article::all();
 	$app -> render('admin/articles.html', array('articles' => $articles));
-});
+})->name('admin_list_articles');
 
+$app->get('/admin/articles/new/', function () use($app){
+	$app -> render('admin/articles_new.html');
+})->name('admin_add_new_article');
 
 # Installation
 $app->get('/install_schema/', function () use ($app) {
