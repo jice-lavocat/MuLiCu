@@ -83,6 +83,11 @@ $app->get('/admin/articles/new/', function () use($app){
 	$app -> render('admin/articles_new.html');
 })->name('admin_add_new_article');
 
+$app->post('/admin/articles/new/(:content)', function () use($app){
+	echo $app->request->post('content');
+	$app -> render('admin/articles_new.html');
+});
+
 # Installation
 $app->get('/install_schema/', function () use ($app) {
 	require 'install/schemas.php';

@@ -2,5 +2,9 @@
 {% block content %}
 Add a new article
 <br />
+<form action='{{urlFor('admin_add_new_article')}}' method="post">
+	<input type="text" name="content" value="Content"/>
+	<input type="submit" value="Save" />
+</form>
 <a href="{{urlFor('admin_list_articles')}}">Cancel</a>
 {% endblock %}
