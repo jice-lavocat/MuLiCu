@@ -7,5 +7,11 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Article' => $baseDir . '/models/Article.php',
-    'Curator' => $baseDir . '/models/Curator.php',
+    'Language' => $baseDir . '/models/Language.php',
+    'Membertype' => $baseDir . '/models/Membertype.php',
+    'Missing_translation' => $baseDir . '/models/Missing_translation.php',
+    'Status' => $baseDir . '/models/Status.php',
+    'Tag' => $baseDir . '/models/Tag.php',
+    'Topic' => $baseDir . '/models/Topic.php',
+    'User' => $baseDir . '/models/User.php',
 );

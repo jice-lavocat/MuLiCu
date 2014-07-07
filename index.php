@@ -60,8 +60,9 @@ $app->get('/curators/', function () {
 
 $app->get('/generate/', function () use ($app) {
 	for ($i = 1; $i<=10; $i++) {
-		$curator = new Curator();
-		$curator->save();
+		$user = new User();
+		$user->email = $i."@gmail.com";
+		$user->save();
 	}
     echo "generated";
 });
